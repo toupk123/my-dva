@@ -23,7 +23,18 @@ module.exports = {
     'react',
     '@typescript-eslint',
   ],
+
   rules: {
-    'linebreak-style': ["off", "windows"]
+    'linebreak-style': ["off", "windows"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx", "ts"] }],
+    "indent": ["off", 2],
   },
+  settings: {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+
 };
