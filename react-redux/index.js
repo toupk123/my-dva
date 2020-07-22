@@ -3,6 +3,7 @@ import React from 'react';
 const storeContext = React.createContext({})
 
 class Provider extends React.Component {
+
     render() {
         return <storeContext.Provider value={this.props.store}>
             {this.props.children}
@@ -14,8 +15,9 @@ class Provider extends React.Component {
 function connect(mapStateToProps = () => ({}), mapDispatchToProps = () => ({})) {
     return function (Component) {
         return class extends React.Component {
-            componentDidMount() {
-                this.context.subscribe(this.handleStoreChange.bind(this))
+            constructor(props,context) {
+                super(props)
+                context.subscribe(this.handleStoreChange.bind(this))
             }
             handleStoreChange() {
                 this.forceUpdate()
@@ -27,8 +29,6 @@ function connect(mapStateToProps = () => ({}), mapDispatchToProps = () => ({})) 
                     {...mapStateToProps(this.context.getState())}
                     {...mapDispatchToProps(this.context.dispatch)}
                 />
-
-
             }
         }
     }

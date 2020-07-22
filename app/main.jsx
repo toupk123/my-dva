@@ -1,6 +1,11 @@
-import React from 'react';
-import { render } from 'react-dom';
-import Greeter from './Greeter';
 import './main.css';
+import dva from "../my-dva"
 
-render(<Greeter />, document.getElementById('root'));
+let app = dva();
+
+app.model(require('./models').default)
+
+app.router(require('./router').default)
+
+app.start('#root')
+

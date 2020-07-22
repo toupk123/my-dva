@@ -11,7 +11,6 @@ export function createStore(reducer, initState = {}, heightener) {
     return currentState
   }
   function dispatch(action) {
-
     if (typeof action === "function") {
       action(dispatch, currentState)
     } else {
@@ -49,5 +48,6 @@ export function applyMiddleware(...middlewares) {
 function compose(...fns) {
   if (fns.length === 0) return arg => arg
   if (fns.length === 1) return fns[0]
+  
   return fns.reduce((res, cur) => (...args) => res(cur(...args)))
 }
