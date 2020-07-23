@@ -11,11 +11,14 @@ class Provider extends React.Component {
     }
 }
 
+
+
+
 // connect()(App)
-function connect(mapStateToProps = () => ({}), mapDispatchToProps = () => ({})) {
+function connect(mapStateToProps = (state: Object) => ({}), mapDispatchToProps?: (dispatch: Function) => ({})) {
     return function (Component) {
         return class extends React.Component {
-            constructor(props,context) {
+            constructor(props, context) {
                 super(props)
                 context.subscribe(this.handleStoreChange.bind(this))
             }

@@ -1,13 +1,13 @@
 import { createStore } from "../redux"
 import { combineReducers } from 'redux';
-
 const DVANAMESPACE = "/"
-
 
 export function create() {
   let app = {
     model: model,
+    start,
     _models: [],
+
   }
 
   function model(models) {
@@ -20,11 +20,18 @@ export function create() {
       let model = prefixNamespace({ ...models })
       app._models.push(model)
     }
+
+  }
+
+  function start() {
     const reducers = combineReducers(createReducer())
+    const initState = combineState(app._models)
     app._store = createStore(
       reducers,
+      initState
     )
   }
+
 
   function createReducer() {
     const reducers = {}
@@ -38,22 +45,28 @@ export function create() {
 }
 
 
-
-function getReducer(m) {
-  return (state, action) => {
-    return handleAction(m, action,state)
-  }
+function combineState(m) {
+  return m.reduce((state, current) => {
+    state[current.namespace] = current.state
+    return state
+  }, {})
 }
 
 
-function handleAction(m, action,defaultState={}) {
+
+function getReducer(m) {
+  return (state, action) => handleAction(m, action, state)
+}
+
+
+function handleAction(m, action, defaultState = {}) {
   let newState = {}
   Object.keys(m.reducers).map(item => {
     if (item === action.type) {
       newState = m.reducers[item](m.state, action)
     }
   })
-  return { ...defaultState,...m.state, ...newState }
+  return { ...defaultState, ...m.state, ...newState }
 }
 
 
