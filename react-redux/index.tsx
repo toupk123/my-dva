@@ -1,21 +1,15 @@
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 const storeContext = React.createContext({})
 
-class Provider extends React.Component {
-
-    render() {
-        return <storeContext.Provider value={this.props.store}>
-            {this.props.children}
-        </storeContext.Provider  >
-    }
+function Provider(props) {
+    return <storeContext.Provider value={props.store}>
+        {props.children}
+    </storeContext.Provider  >
 }
 
-
-
-
 // connect()(App)
-function connect(mapStateToProps = (state: Object) => ({}), mapDispatchToProps?: (dispatch: Function) => ({})) {
+function connect(mapStateToProps = (state: Object) => ({}), mapDispatchToProps = (dispatch: Function) => ({})) {
     return function (Component) {
         return class extends React.Component {
             constructor(props, context) {
@@ -37,8 +31,26 @@ function connect(mapStateToProps = (state: Object) => ({}), mapDispatchToProps?:
     }
 }
 
+function connectHook(mapStateToProps = (state: Object) => ({}), mapDispatchToProps = (dispatch: Function) => ({})) {
+    return function (Component) {
+        return function (props) {
+            const [useStore, setStore] = useState(useContext(storeContext));
+            useEffect(() => {
+                useStore.subscribe(() => setStore({ ...useStore }))
+            }, [])
+            return <Component
+                {...useStore}
+                {...props}
+                {...mapStateToProps(useStore.getState())}
+                {...mapDispatchToProps(useStore.dispatch)}
+            />
+        }
+    }
+}
+
 
 export {
     Provider,
-    connect
+    connect,
+    connectHook
 }

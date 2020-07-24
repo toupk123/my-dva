@@ -2,7 +2,7 @@
 export default {
     namespace: 'home',
     state: {
-        str: '测试12'
+        initialPage:1
     },
     reducers: {
         add(state, action) {

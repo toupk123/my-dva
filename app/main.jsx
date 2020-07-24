@@ -1,4 +1,4 @@
-import './main.css';
+import './app.css';
 import dva from "../my-dva"
 
 let app = dva();

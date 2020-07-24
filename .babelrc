@@ -1,5 +1,12 @@
 {
     "plugins": [
+        [
+            "import",
+            {
+                "libraryName": "antd-mobile",
+                "style": "css"
+            }
+        ],
         "@babel/plugin-transform-runtime",
         "@babel/plugin-proposal-class-properties"
     ], // babel 8 以后的配置都已经变了,并且是已经支持ts 不一定需要使用ts-loader之类的
