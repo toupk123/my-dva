@@ -1,6 +1,7 @@
 import React from "react"
-
-
-class My extends React.Component{
-    
+import styles from './style.scss';
+function My() {
+    return <div className={styles.content}>1222</div>
 }
+
+export default My

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connectHook } from "../../../react-redux/index"
 import { Tabs } from "antd-mobile"
 import { homeTabs } from "./config"
+import My from '../my';
 
 function Home(props) {
   return <div>
@@ -10,6 +11,7 @@ function Home(props) {
       tabs={homeTabs}
       tabBarPosition="bottom"
     >
+      <My />
     </Tabs>
   </div>
 }

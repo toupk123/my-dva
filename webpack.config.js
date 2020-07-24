@@ -35,7 +35,12 @@ module.exports = {
         contentBase: './build',//本地服务器所加载的页面所在目录
         historyApiFallback: true,//不跳转
         inline: true, //实时刷新
-        port:8081
+        port:8081,
+        hot: true,
+        watchOptions: {
+            aggregateTimeout: 2000,//浏览器延迟多少秒更新
+            poll: 1000//每秒检查一次变动
+        },
     },
     optimization: {
         splitChunks: {
