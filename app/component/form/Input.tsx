@@ -1,0 +1,21 @@
+import React, { useState,useEffect } from 'react'
+import { List, InputItem } from 'antd-mobile';
+import style from "./style.scss";
+import { InputProps } from "./Interface"
+
+function Input(props: InputProps) {
+    const [useValue,setValue] = useState(props.defaultValue)
+    function onChange(v) {
+        setValue(v)
+    }
+    return <div className={style.inputBox}>
+        <List>
+            <InputItem type="text" onChange={onChange} value={useValue}>
+                光标在左
+            </InputItem>
+        </List>
+
+    </div>
+}
+
+export default Input

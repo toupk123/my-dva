@@ -1,18 +1,12 @@
 import React, { useState } from "react";
 import { connectHook } from "../../../react-redux/index"
-import { Tabs } from "antd-mobile"
-import { homeTabs } from "./config"
-import My from '../my';
+import style from "../../styles/app.scss"
+import Form from "../../component/form"
+import {formItemArr} from "../../config"
 
 function Home(props) {
-  return <div>
-    <Tabs
-      initialPage={props.initialPage}
-      tabs={homeTabs}
-      tabBarPosition="bottom"
-    >
-      <My />
-    </Tabs>
+  return <div className={style.body}>
+    <Form itemArr={formItemArr}/>
   </div>
 }
 

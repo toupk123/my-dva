@@ -1,0 +1,26 @@
+// form组件部分
+
+.form-box{
+    height:100%;
+    position: relative;
+}
+.submit{
+    position: absolute;
+    bottom: 0;
+    width:100%;
+}
+
+
+
+
+// input 组件部分
+.input-box{
+    background: #fff;
+    :global(.am-list-body){
+        &::before,&::after{
+            height: 0 !important;
+        }
+    }
+}
+
+

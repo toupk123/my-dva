@@ -5,7 +5,7 @@ const path = require('path')
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     // context:path.resolve(__dirname,'1231231') 这里是配合entry入口文件的相对文件地址
     devtool: 'eval-source-map', // 开发环境下 调试代码时使用,
@@ -35,10 +35,10 @@ module.exports = {
         contentBase: './build',//本地服务器所加载的页面所在目录
         historyApiFallback: true,//不跳转
         inline: true, //实时刷新
-        port:8081,
+        port: 8081,
         hot: true,
         watchOptions: {
-            aggregateTimeout: 2000,//浏览器延迟多少秒更新
+            aggregateTimeout: 1000,//浏览器延迟多少秒更新
             poll: 1000//每秒检查一次变动
         },
     },
@@ -74,56 +74,55 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                // 这里是对一个文件进行了多个处理,
-                test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    use: [{
-                        loader: 'css-loader'
-                    }],
-                    fallback: 'style-loader'
-                })
-            },
-            {
                 test: /\.(png|svg|jpg|gif)$/,
                 use: [
                     'file-loader'
                 ]
             },
             {
+                // 这里是对一个文件进行了多个处理,
+                test: /\.css$/,
+                use: [{
+                    loader: MiniCssExtractPlugin.loader,
+                },  "css-loader"]
+
+            },
+            {
                 test: /\.scss$/,
                 exclude: [/node_modules/],
-                use: ExtractTextPlugin.extract({
-                    use: [
-                        {
-                            loader: "typings-for-css-modules-loader", // 在ts文件中，生成.d.ts导出类型 同时进行css module 化
-                            options: {                                // 不过好像对css-loader的版本有问题，目前看起来支持1.0.0
-                                modules: true,
-                                namedExport: true,
-                                camelCase: true,
-                                localIdentName: "[name]_[hash:base64:5]"
-                            }
-                        }, {
-                            loader: 'sass-loader',
-                            options: {
-                                sassOptions: {
-                                    outputStyle: 'expanded',
-                                    sourceMap: true
-                                }
 
-                            } // 处理sass文件
-                        },
-                        {
-                            loader: 'postcss-loader',
-                            options: {
-                                sourceMap: true,
-                                config: {
-                                    path: 'postcss.config.js'  // 这个得在项目根目录创建此文件
-                                }
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                    },
+                    {
+                        loader: "typings-for-css-modules-loader", // 在ts文件中，生成.d.ts导出类型 同时进行css module 化
+                        options: {                                // 不过好像对css-loader的版本有问题，目前看起来支持1.0.0
+                            modules: true,
+                            namedExport: true,
+                            camelCase: true,
+                            localIdentName: "[name]_[hash:base64:5]"
+                        }
+                    }, {
+                        loader: 'sass-loader',
+                        options: {
+                            sassOptions: {
+                                outputStyle: 'expanded',
+                                sourceMap: true
                             }
-                        }	// 自动添加css3前缀，post css同时可以合并相同css规则，达到压缩文件
-                    ],
-                    fallback: 'style-loader' //如果提取失败，就使用style-loader
-                })
+
+                        } // 处理sass文件
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            sourceMap: true,
+                            config: {
+                                path: 'postcss.config.js'  // 这个得在项目根目录创建此文件
+                            }
+                        }
+                    }	// 自动添加css3前缀，post css同时可以合并相同css规则，达到压缩文件
+                ]
             }
             // loader 是针对某个单一文件，比如jsx文件，Plugins是整个构建过程都会生效
 
@@ -144,8 +143,9 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),//热加载插件
         new webpack.optimize.OccurrenceOrderPlugin(),  // 
-        new ExtractTextPlugin({
-            filename: '[hash:8].css'
+        new MiniCssExtractPlugin({
+            filename: '[hash:8].css',
+            chunkFilename: '[id].css'
         }),// 分离css
         // new BundleAnalyzerPlugin(),
         new CleanWebpackPlugin() // 删除output的文件
