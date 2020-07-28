@@ -2,14 +2,11 @@
 export default {
     namespace: 'home',
     state: {
-        initialPage:1
+        purposeListParams:{
+            list:[]
+        },      
     },
     reducers: {
-        add(state, action) {
-            return { ...state, str: 'ceshi12' }
-        },
-        add2(state, action) {
-            return { ...state, str: 'ceshi12' }
-        }
+
     }
 }

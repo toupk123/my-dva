@@ -1,19 +1,23 @@
 import React, { useState } from "react";
 import { connectHook } from "../../../react-redux/index"
-import style from "../../styles/app.scss"
-import Form from "../../component/form"
-import {formItemArr} from "../../config"
+import styles from './style.scss';
+import Statistics from './statistics'
+import PurposeList from './purposeList'
+import { appModel,HomeState} from "../../interface/app"
 
-function Home(props) {
-  return <div className={style.body}>
-    <Form itemArr={formItemArr}/>
+function Home(props:HomeState) {
+  return <div className={styles.homeBody}>
+    <Statistics />
+    <div className={styles.homeContent}>
+      <PurposeList list={props.purposeListParams.list} />
+    </div>
   </div>
 }
 
-export default connectHook((state) => {
+export default connectHook((state: appModel) => {
   const { home } = state
   return {
-    initialPage: home.initialPage
+    purposeListParams: home.purposeListParams
   }
 })(Home)
 

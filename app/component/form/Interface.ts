@@ -1,7 +1,7 @@
 export type FormItemProps =  InputProps | SelectProps;
 export type INPUTTYPE = 'input';
 export type SELECTTYPE = 'select';
-
+export type ITEMVALUE = string | number | boolean;
 
 export interface FormProps {
     itemArr: Array<FormItemProps>,
@@ -12,7 +12,9 @@ export interface FormProps {
 interface ItemProps {
     label:string,
     paramName: string,
-    defaultValue? : any
+    defaultValue? : ITEMVALUE,
+    onChange?:Function,
+    value?:ITEMVALUE
 }
 
 
@@ -25,6 +27,6 @@ export interface SelectProps extends ItemProps{
     type:SELECTTYPE,
     options: Array<{
         key: string,
-        value: string | number | boolean
+        value: ITEMVALUE
     }>
 }

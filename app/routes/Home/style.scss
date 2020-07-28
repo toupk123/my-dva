@@ -1,0 +1,58 @@
+$item-height:80px;
+$item-padding:20px;
+$item-title-size:14px;
+$item-title-lg:18px;
+$color:#848484;
+
+// index
+.home{
+    &-body{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    &-content{
+        flex:1;
+        background-color: #fff;
+        overflow: auto;
+    }
+}
+
+
+
+.statistics{
+    background-image: linear-gradient(to right,#48a1ff,#31dffd);
+    height: 290px;
+    :global(.am-navbar){
+        background-color: transparent;
+    }
+}
+
+// 时间表
+.purpose{
+    color:$color;
+    &-item{
+        color:$color;
+        display: flex;
+        height:$item-height;
+        justify-items: center;
+        padding: 0 $item-padding;
+    }
+    &-title{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex:1;
+        &-h1{
+            font-size: $item-title-lg;
+            padding-bottom: .25*$item-padding;
+        }
+        &-h2{
+            font-size:$item-title-size;
+        }
+    }
+    &-time{
+        line-height: $item-height;
+    }
+}
+
