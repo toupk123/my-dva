@@ -10,8 +10,9 @@ import { useHistory } from "react-router-dom"
 
 
 function System() {
+  const history = useHistory()
   function addTask() {
-    const history = useHistory()
+
     console.log('ceshi111111111', history)
   }
   return <div className={style.systemBox} onClick={addTask}>
