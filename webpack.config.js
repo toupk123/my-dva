@@ -74,17 +74,35 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
+                test: /\.(png|jpg|gif)$/,
                 use: [
                     'file-loader'
                 ]
+            },
+            {
+                test: /\.(eot|ttf|svg|woff|woff2)$/,
+                use: {
+                    loader: 'url-loader',
+                    options: {
+                        esModule: false, // 新版本中esModule默认为true，会导致文件的地址变为[object Module],因此这里设置为false
+                        name: '[name]_[hash].[ext]', // 输出的文件名为[原名称]_[哈希值].[原后缀]
+                        outputPath: 'fonts/',       // 文件存储路径（output.path + 值）（物理路径, 存储路径）
+                        // 负责输出目录, 即打包后的写在磁盘的位置
+                        publicPath: 'dist/fonts/',   // 输出解析文件的目录，url 相对于 HTML 页面（index.html所在文件夹的绝对路径 + 值）（文件引用路径就是看这个）
+                        //                             // 如果output设置了publicPath， options也设置了publicPath，优先以options的publicPath为主
+                        //                             // 是对页面引入资源的补充,比如img标签引入或者css引入等.
+                        //                             // 千万不能设错，应该观察文件和HTML页面的存储地址位置，进行设置，否则引用时地址会错误，找不到文件
+                        // 一般只设置output的publicPath，方便统一管理
+                        limit: 1024                 // 限制当文件小于1KB的时候，就将文件转为base64存储于js中，以减少http请求次数，当文件大于1KB，则打包文件到指定目录，避免js过大
+                    }
+                }
             },
             {
                 // 这里是对一个文件进行了多个处理,
                 test: /\.css$/,
                 use: [{
                     loader: MiniCssExtractPlugin.loader,
-                },  "css-loader"]
+                }, "css-loader"]
 
             },
             {

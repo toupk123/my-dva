@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-
-
 <html>
 
 <head>
@@ -12,6 +10,12 @@
     <div id='root'>
 
     </div>
+    <div id="ss">123123123</div>
+    <script>
+       document.getElementById('ss').addEventListener('click',function(){
+        window.WeixinJSBridge.invoke('chooseImage')
+       })
+    </script>
 </body>
 
 </html>

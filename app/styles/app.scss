@@ -1,4 +1,6 @@
 $bule-color:#108ee9;
+$system-right:30px;
+$system-transform-y:-80px;
 
 .content{
     height:100%;
@@ -7,4 +9,18 @@ $bule-color:#108ee9;
 }
 .body{
     height:100%;
+    position: relative;
+}
+
+
+// systemBox
+
+
+.system{
+    &-box{
+        position: absolute;
+        transform: translate3d(0, $system-transform-y, 0);
+        z-index: 1000;
+        right: $system-right;
+    }
 }

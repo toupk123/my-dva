@@ -1,0 +1,22 @@
+@font-face {font-family: "iconfont";
+  src: url('./iconfont.eot?t=1595987799520'); /* IE9 */
+  src: url('./iconfont.eot?t=1595987799520#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAQUAAsAAAAACAgAAAPGAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCCcAqEFINLATYCJAMICwYABCAFhG0HLhvvBsiusCnD9WiLzGKhNIZXcbcL+DnMgQiiNXT2/0IAkiRrBB0VIxJJJGSMiapqhQLyrKt/0A5LCqUEr9QGYKMn2xPxuJrLvZafQP/aAoMCkoG9hO8DJCsU0PgK2anw7OtcdXIviCiikAIO/K0toJCCiZxAqLkE5t8TNRLgj3unvyU+H1Auc0ya1AUYBxTgmBsk4AIpMG4Yu6AlriZQqZcouLp7fAZ9ErNTIM4MTYK+jEJqSA/lQmnFyCQeQIny7BLnF8B98Pn4B5NBRKYkZ2ZtnO6osP6b04rKY/6fO/EQwJxOBzaOHNOAROxUGtZ0RoFpuCrVQJdBYFvpwW/OovAYm/3jEUQpM7UadEPGNTEd1qX+MgMJFXgDnwbdhYpWUpMaPjMeXqPnDWRbL2n1MXRCgtlTUMNgzhhgnj1JYaYGOpTXFNtozw+LGvkXsbRaelgYNti1qa4HXn1alxw0/DLAOen4QMzx7diC3Gs9Iyg4VLxuYul4DxL45TKvCbKxvIXsotCGlnb73A7LwTa0d4nSbRGdy1+P++x86PcpzOn17ci91wO5D7sku7m0ad7K6W0S7wKs2WPI/scMn9pwT74ZVDMnUDW3h9rGcDsrHvKZuZlTqjtF4C20NhxPFmn/c2JFKhaqcWzcm2E4dxWJlnQcklVPKIUinmPTemk8RWrVch6M4Q9QKe5mjqO7/NrDnkKDEL5PK7BPwa5SINcdBdQO9VS96kjhtJ0L7PPBN2Eqhd3KcXSdH5/8uXmZysGMl878h7xniyyyFWtThc1N+vIlAzcWSnxPdQN++t5hYdznvr/KiYZmaBaLmvj8yuwgeotTlFHsCWlZmb9FCbDa9KYomf+aT88j4xYRWAQo5Le46j/9jvmRoFdHCtV3IpTAD+zLPrAVEnQzgfI7NwZ/kNmxLGlsU5klhVkZybyh4s3kVKpEEbY0Oh1qagESXSjnTAiZMj2QKzeMSrhpKFFlBkqVW4BKU/THV2kSolOkCkxKBBDqtUGm1jvI1VtBJdwJlGh1D6XqAxcq7QXNjFVGwzun45MUkoouGXorwuW2OsyF6SekRbbkp9kB/oL8wHCjlLhkPrxHLvlT9AmNtcmwkKOHLxzEwHpk2wKDfGGSEo56hWF7UULCo+pJo67CgZwVPiIJERVykUHeFIKLe9VDucL7TxBNxCbxG0qqlBeIL2DUj6SIk+yA2hO4nUpu5ZxQMc2kMCEOefAJDoQBHbGtgICCqpuZiCI0ymuAr22RBKrk0VUwurzIebs1UMmUZmHpcunK9SMAAAAA') format('woff2'),
+  url('./iconfont.woff?t=1595987799520') format('woff'),
+  url('./iconfont.ttf?t=1595987799520') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('./iconfont.svg?t=1595987799520#iconfont;') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconico-system:before {
+  content: "\e820";
+  font-size: 24px;
+}
+

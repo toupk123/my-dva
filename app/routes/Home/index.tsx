@@ -3,9 +3,9 @@ import { connectHook } from "../../../react-redux/index"
 import styles from './style.scss';
 import Statistics from './statistics'
 import PurposeList from './purposeList'
-import { appModel,HomeState} from "../../interface/app"
+import { appModel, HomeState } from "../../interface/app"
 
-function Home(props:HomeState) {
+function Home(props: HomeState) {
   return <div className={styles.homeBody}>
     <Statistics />
     <div className={styles.homeContent}>
