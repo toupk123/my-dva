@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><link href="1.css" rel="stylesheet"><link href="d77bd312.css" rel="stylesheet"></head><body><div id="root"></div><div id="ss">123123123</div><script>document.addEventListener('click',function(){
+        document.addEventListener('click',function(){
             window.WeixinJSBridge.invoke('chooseImage', {
             count: 1, // 默认9
             sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -8,4 +8,4 @@
                 console.log('1111',res)
             }
         })
-        })</script><script src="vendors.c39c7b60.js"></script><script src="d77bd312c98304caaa77.js"></script></body></html>
+        })
