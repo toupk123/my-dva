@@ -26,7 +26,7 @@ export default function dva() {
     }
   }
   function router(routers) {
-    app._router = routers()
+    app._router = routers
   }
   app.router = router
   app.use = use
@@ -42,7 +42,7 @@ function use() {
 
 function patchHistory(history) {
   history.listen = callback => {
-
+    callback()
   }
   return history
 }

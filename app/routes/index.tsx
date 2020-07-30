@@ -12,8 +12,7 @@ import { useHistory } from "react-router-dom"
 function System() {
   const history = useHistory()
   function addTask() {
-
-    console.log('ceshi111111111', history)
+    history.push("/createTask")
   }
   return <div className={style.systemBox} onClick={addTask}>
     <i className="icon iconfont iconico-system"></i>
