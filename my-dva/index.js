@@ -14,7 +14,7 @@ export default function dva() {
     if (isString(container)) {
       container = document.querySelector(container);
     }
-    
+
     if (!app._store) {
       storeStart()
     }
@@ -41,8 +41,10 @@ function use() {
 
 
 function patchHistory(history) {
+  const oldliten = history.listen
   history.listen = callback => {
-    callback()
+    // 在路由变化时，进行一些操作
+    oldliten.call(history, callback)
   }
   return history
 }

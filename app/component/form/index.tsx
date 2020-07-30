@@ -20,15 +20,15 @@ function returnComponent(item: FormItemProps, onChange: Function) {
 
 function Form(props: FormProps) {
     const { itemArr, submitText } = props;
-    const [useParams,setParams] = useState({})
+    const [useParams, setParams] = useState({})
 
     function submit() {
-        console.log(itemArr,useParams)
+        console.log(itemArr, useParams)
     }
     function onChange(value: ITEMVALUE, item: FormItemProps) {
         itemArr.map(option => {
             if (option.label === item.label) {
-                setParams({...useParams,[item.paramName]:value})
+                setParams({ ...useParams, [item.paramName]: value })
             }
         })
     }
