@@ -64,8 +64,7 @@
     "webpack-cli": "^3.3.12"
   },
   "scripts": {
-    "start": "webpack",
-    "server": "webpack-dev-server --open",
+    "start": "webpack-dev-server --open",
     "build": "webpack --mode=production  --config ./webpack.production.config.js --progress"
   },
   "author": "",
