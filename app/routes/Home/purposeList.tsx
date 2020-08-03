@@ -5,17 +5,18 @@ import BgProgress from "../../component/BgProgress"
 interface PurposeItemProps {
     title: string,
     subText: string,
-    time: string
+    time: string,
+    width: string
 }
 
 export interface PurposeListProps {
     list: PurposeItemProps[]
 }
 
-const BgProgressProps = { width: '20%', bgColor: 'rgb(10 131 226 / 20%)' }
+const BgProgressProps = { width: '0%', bgColor: 'rgb(10 131 226 / 20%)' }
 
 function PurposeItem(props: PurposeItemProps) {
-    return <BgProgress {...BgProgressProps}>
+    return <BgProgress {...{ ...BgProgressProps, width: props.width }}>
         <div className={styles.purposeItem}>
             <div className={styles.purposeTitle}>
                 <div className={styles.purposeTitleH1}>{props.title}</div>

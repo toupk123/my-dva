@@ -1,15 +1,19 @@
+import  { ReactElement } from "react"
+
 export type FormItemProps =  InputProps | SelectProps;
 export type INPUTTYPE = 'input';
 export type SELECTTYPE = 'select';
-export type ITEMVALUE = string | number | boolean;
+export type ITEMVALUE = string | number ;
 
 export interface FormProps {
     itemArr: Array<FormItemProps>,
-    submitText?: string
+    submitText?: string,
+    children?: ReactElement,
+    submit?: Function
 }
 
 
-interface ItemProps {
+export interface ItemProps {
     label:string,
     paramName: string,
     defaultValue? : ITEMVALUE,
@@ -26,7 +30,7 @@ export interface InputProps  extends ItemProps{
 export interface SelectProps extends ItemProps{
     type:SELECTTYPE,
     options: Array<{
-        key: string,
+        label: string,
         value: ITEMVALUE
     }>
 }

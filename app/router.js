@@ -1,4 +1,4 @@
-import { Router, Switch, Route, HashRouter } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
 import App from "./routes";
 import React from "react";
 import CreateTask from "./routes/CreateTask";

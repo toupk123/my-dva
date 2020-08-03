@@ -1,12 +1,17 @@
+import { Storage } from "../uilts"
 
 export default {
     namespace: 'home',
     state: {
-        purposeListParams:{
-            list:[]
-        },      
+        purposeListParams: {
+            list: []
+        },
     },
     reducers: {
-
+        addPurposeItem(state, data) {
+            const storage = Storage("localStorage");
+            state.purposeListParams.list.push(data.data);
+            storage.setItem()
+        }
     }
 }

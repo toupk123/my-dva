@@ -1,9 +1,11 @@
 import React, { ReactElement, useState } from 'react'
 import Input from './Input'
 import { FormItemProps, FormProps, ITEMVALUE } from "./Interface"
-import { INPUTTYPE } from './config'
+import { INPUTTYPE, SELECTTYPE } from './config'
 import { Button } from "antd-mobile"
 import style from "./style.scss"
+import Select from "./Select"
+
 
 function returnComponent(item: FormItemProps, onChange: Function) {
     let component: ReactElement = null;
@@ -11,11 +13,14 @@ function returnComponent(item: FormItemProps, onChange: Function) {
         case INPUTTYPE:
             component = <Input {...{ ...item, onChange }} />;
             break;
+        case SELECTTYPE:
+            component = <Select {...{ ...item, onChange }} />;
+            break;
+        default:
+            component = null
     }
     return component
 }
-
-
 
 
 function Form(props: FormProps) {
@@ -23,7 +28,7 @@ function Form(props: FormProps) {
     const [useParams, setParams] = useState({})
 
     function submit() {
-        console.log(itemArr, useParams)
+        props.submit&&props.submit(useParams)
     }
     function onChange(value: ITEMVALUE, item: FormItemProps) {
         itemArr.map(option => {
@@ -33,6 +38,7 @@ function Form(props: FormProps) {
         })
     }
     return <div className={style.formBox}>
+        {props.children}
         <form>
             {itemArr.map(item => returnComponent(item, onChange))}
         </form>

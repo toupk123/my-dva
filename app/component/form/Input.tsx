@@ -7,14 +7,14 @@ function Input(props: InputProps) {
     const [useValue, setValue] = useState(props.defaultValue)
     function onChange(v) {
         setValue(v)
-        props.onChange && props.onChange(v,props)
+        props.onChange && props.onChange(v, props)
     }
 
 
     return <div className={style.inputBox}>
         <List>
-            <InputItem type="text" onChange={onChange} value={String(useValue || '')}>
-                光标在左
+            <InputItem type="text" onChange={onChange} value={String(useValue || '')} >
+                {props.label}
             </InputItem>
         </List>
 

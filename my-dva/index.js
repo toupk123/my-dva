@@ -8,6 +8,10 @@ import { createHashHistory } from "history"
 export default function dva() {
   let app = create();
   let storeStart = app.start
+
+  app.router = router
+  app.use = use
+  app.start = start
   app._history = patchHistory(createHashHistory())
 
   function start(container) {
@@ -28,9 +32,7 @@ export default function dva() {
   function router(routers) {
     app._router = routers
   }
-  app.router = router
-  app.use = use
-  app.start = start
+
   return app
 }
 

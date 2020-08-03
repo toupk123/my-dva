@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
 </head>
+
 <body>
+  <div id='ss'>123123123123123123</div>
+  <div id="ss2">123123123123</div>
   <div id="root"></div>
+
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js">
+
+  </script>
+  <script>
+    document.getElementById('ss').addEventListener('click', function () {
+      wx.config({
+        beta: true,// 必须这么写，否则wx.invoke调用形式的jsapi会有问题
+        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        "appId": "ww8aa84fc5d49aeeb9",
+        "timestamp": "1596445715.01818",
+        "nonceStr": "XMLFJHService",
+        "signature": "954AA7DC5D0544BD76C863730B1A08643B7E8E40",
+        jsApiList: ["chooseImage"]
+      })
+    })
+
+    document.getElementById('ss2').addEventListener('click', function () {
+      console.log('111',wx.chooseImage)
+    })
+  </script>
 </body>
 
 </html>
