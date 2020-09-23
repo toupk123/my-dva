@@ -27,7 +27,7 @@ module.exports = {
         // 可以在入口文件设置 __webpack_public_path = myPath
     },
     // 这里的名称可以使用hash 对于分离出来的chunk，可以有不同的名称，避免缓存
-    mode: 'production',
+    mode: 'development',
     //  这里的mode可以设置打包配置的环境可以再package中设置
     // development 开发环境  production 生产环境 node默认
     // 

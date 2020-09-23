@@ -62,6 +62,5 @@ function CreateTask(props) {
 
 
 export default connectHook(state => {
-    console.log('11', state)
     return {}
 })(CreateTask)

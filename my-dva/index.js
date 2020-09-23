@@ -19,20 +19,19 @@ export default function dva() {
       container = document.querySelector(container);
     }
 
-    if (!app._store) {
+    (app?._store)??storeStart()
+   /* if (!(app?._store)) {
       storeStart()
-    }
+    }*/
 
     if (container) {
       render(container, app, app._store)
     } else {
-
     }
   }
   function router(routers) {
     app._router = routers
   }
-
   return app
 }
 
@@ -61,7 +60,6 @@ function getProvider(app, store) {
 function render(container, app, store) {
   ReactDOM.render(React.createElement(getProvider(app, store)), container)
 }
-
 
 function isString(str) {
   return typeof str === 'string'

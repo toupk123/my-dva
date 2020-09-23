@@ -11,7 +11,7 @@ export default {
         addPurposeItem(state, data) {
             const storage = Storage("localStorage");
             state.purposeListParams.list.push(data.data);
-            storage.setItem()
+            storage.setItem(`TOTAL_TASK`, JSON.stringify(data.data))
         }
     }
 }

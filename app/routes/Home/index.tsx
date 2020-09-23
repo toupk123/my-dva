@@ -16,7 +16,6 @@ function Home(props: HomeState) {
 
 export default connectHook((state: appModel) => {
   const { home } = state
-  console.log('111111',home.purposeListParams)
   return {
     purposeListParams: home.purposeListParams
   }

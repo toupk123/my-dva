@@ -2,7 +2,6 @@ interface storageParam {
     type?: "sessionStorage" | "localStorage"
 }
 
-
 function Storage(param: storageParam) {
     let storage = {
         type: param.type || "localStorage",

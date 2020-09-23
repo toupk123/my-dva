@@ -7,6 +7,8 @@ const TerserPlugin = require('terser-webpack-plugin');
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+
+
 module.exports = {
     // context:path.resolve(__dirname,'1231231') 这里是配合entry入口文件的相对文件地址
     // devtool: 'eval-source-map', // 开发环境下 调试代码时使用,
@@ -160,6 +162,6 @@ module.exports = {
             chunkFilename: '[id].css'
         }),// 分离css webpack4.0 版本进行的css文件分离
         // new BundleAnalyzerPlugin(),
-        new CleanWebpackPlugin() // 删除output的文件
+        new CleanWebpackPlugin(), // 删除output的文件
     ],
 }
